@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/style.css" />
+    <link rel="stylesheet" href="/public/game/style.css" />
+    <title>Game - Power4Web</title>
+  </head>
+  <body>
+    <h1>{{.Title}}</h1>
+    <div class="game">
+      <h2>{{.PlayerStatus}}</h2>
+      <div class="game__actions">
+        <form action="/placeLine" method="post">
+          <button name="line_btn" value="1" type="submit">V</button>
+        </form>
+        <form action="/placeLine" method="post">
+          <button name="line_btn" value="2">V</button>
+        </form>
+        <form action="/placeLine" method="post">
+          <button name="line_btn" value="3">V</button>
+        </form>
+        <form action="/placeLine" method="post">
+          <button name="line_btn" value="4">V</button>
+        </form>
+        <form action="/placeLine" method="post">
+          <button name="line_btn" value="5">V</button>
+        </form>
+        <form action="/placeLine" method="post">
+          <button name="line_btn" value="6">V</button>
+        </form>
+        <form action="/placeLine" method="post">
+          <button name="line_btn" value="7">V</button>
+        </form>
+      </div>
+      <div class="game__content">
+        {{range $row := .Rows}} {{range $item := $row}} {{$item.Player}} {{end}}
+        <br />
+        {{end}}
+      </div>
+    </div>
+  </body>
+</html>
