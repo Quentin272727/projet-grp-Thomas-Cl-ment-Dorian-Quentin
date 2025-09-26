@@ -7,14 +7,16 @@ type RowStruct struct {
 
 type GameStruct struct {
 	Title        string
-	PlayerStatus string
+	PlayerToPlay int
 	Rows         [][]RowStruct
+	IsLineFull   []bool
 }
 
 var Data = GameStruct{
 	Title:        "Game",
-	PlayerStatus: "",
+	PlayerToPlay: PlayerToPlay,
 	Rows:         make([][]RowStruct, 6),
+	IsLineFull:   make([]bool, 7),
 }
 var IsGameStarted = false
 var PlayerToPlay = 1

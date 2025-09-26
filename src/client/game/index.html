@@ -10,33 +10,87 @@
   <body>
     <h1>{{.Title}}</h1>
     <div class="game">
-      <h2>{{.PlayerStatus}}</h2>
+      {{if eq .PlayerToPlay 1}}
+      <div class="slot slot__big slot__red"></div>
+      {{end}} {{if eq .PlayerToPlay 2}}
+      <div class="slot slot__big slot__yellow"></div>
+      {{end}}
       <div class="game__actions">
         <form action="/placeLine" method="post">
-          <button name="line_btn" value="1" type="submit">V</button>
+          {{if index .IsLineFull 0}}
+          <button class="slot__button slot__button-disabled" disabled>1</button>
+          {{else}}
+          <button class="slot__button" name="line_btn" value="1" type="submit">
+            1
+          </button>
+          {{end}}
         </form>
         <form action="/placeLine" method="post">
-          <button name="line_btn" value="2">V</button>
+          {{if index .IsLineFull 1}}
+          <button class="slot__button slot__button-disabled" disabled>2</button>
+          {{else}}
+          <button class="slot__button" name="line_btn" value="2" type="submit">
+            2
+          </button>
+          {{end}}
         </form>
         <form action="/placeLine" method="post">
-          <button name="line_btn" value="3">V</button>
+          {{if index .IsLineFull 2}}
+          <button class="slot__button slot__button-disabled" disabled>3</button>
+          {{else}}
+          <button class="slot__button" name="line_btn" value="3" type="submit">
+            3
+          </button>
+          {{end}}
         </form>
         <form action="/placeLine" method="post">
-          <button name="line_btn" value="4">V</button>
+          {{if index .IsLineFull 3}}
+          <button class="slot__button slot__button-disabled" disabled>4</button>
+          {{else}}
+          <button class="slot__button" name="line_btn" value="4" type="submit">
+            4
+          </button>
+          {{end}}
         </form>
         <form action="/placeLine" method="post">
-          <button name="line_btn" value="5">V</button>
+          {{if index .IsLineFull 4}}
+          <button class="slot__button slot__button-disabled" disabled>5</button>
+          {{else}}
+          <button class="slot__button" name="line_btn" value="5" type="submit">
+            5
+          </button>
+          {{end}}
         </form>
         <form action="/placeLine" method="post">
-          <button name="line_btn" value="6">V</button>
+          {{if index .IsLineFull 5}}
+          <button class="slot__button slot__button-disabled" disabled>6</button>
+          {{else}}
+          <button class="slot__button" name="line_btn" value="6" type="submit">
+            6
+          </button>
+          {{end}}
         </form>
         <form action="/placeLine" method="post">
-          <button name="line_btn" value="7">V</button>
+          {{if index .IsLineFull 6}}
+          <button class="slot__button slot__button-disabled" disabled>7</button>
+          {{else}}
+          <button class="slot__button" name="line_btn" value="7" type="submit">
+            7
+          </button>
+          {{end}}
         </form>
       </div>
       <div class="game__content">
-        {{range $row := .Rows}} {{range $item := $row}} {{$item.Player}} {{end}}
-        <br />
+        {{range $row := .Rows}}
+        <div class="slots">
+          {{range $item := $row}} {{if eq $item.Player 0}}
+          <div class="slot slot__empty"></div>
+          {{end}} {{if eq $item.Player 1}}
+          <div class="slot slot__red"></div>
+          {{end}} {{if eq $item.Player 2}}
+          <div class="slot slot__yellow"></div>
+          {{end}} {{end}}
+        </div>
         {{end}}
       </div>
     </div>
