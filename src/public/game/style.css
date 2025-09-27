@@ -1,10 +1,35 @@
-:root {
-  --card__background-color: #262626;
-  --card__background-color-darken: #191919;
-  --card__background-color-hover: #353535;
-  --card__border-color: #2f2f2f;
-  --card__border-color-darken: #212121;
+/* Tiny leaderboard */
+.leaderboard {
+  width: fit-content;
+  padding: 0.5em;
+  display: flex;
+  gap: 1em;
+  background-color: var(--card__black-background-color);
+  border: 0.3em solid var(--card__black-border-color);
+  border-radius: 0.2em;
 }
+
+.leaderboard__player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.leaderboard__player .slot {
+  margin-bottom: 0.5em;
+}
+
+.leaderboard__player p {
+  margin: 0 0 0.4em 0;
+  font-family: monospace;
+}
+
+.leaderboard__separator {
+  width: 0.2em;
+  background-color: var(--card__black-border-color);
+  border-radius: 0.3em;
+}
+
+/* Game related content */
 
 .game {
   width: calc(100% - 10em);
@@ -24,9 +49,11 @@
   margin-top: 1em;
   padding: 0.5em;
   border-radius: 0.3em;
-  border: 0.2em solid var(--card__border-color);
-  background-color: var(--card__background-color);
+  border: 0.2em solid var(--card__black-border-color);
+  background-color: var(--card__black-background-color);
 }
+
+/* Slots */
 
 .slots {
   margin-top: 0.3em;
@@ -37,6 +64,7 @@
 .slot {
   width: 1.5em;
   height: 1.5em;
+  border: 0.15em solid;
   border-radius: 30em;
 }
 
@@ -49,37 +77,78 @@
   border-left-width: 0.3em !important;
 }
 
-.slot__button {
-  padding: 0.8em 1em;
-  border: 0.2em solid var(--card__border-color);
-  border-radius: 0.4em;
-  background-color: var(--card__background-color);
-  color: #fefefe;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.slot__button:hover {
-  background-color: var(--card__background-color-hover);
-}
-
-.slot__button-disabled {
-  border: 0.2em solid var(--card__border-color-darken);
-  background-color: var(--card__background-color-darken) !important;
-  cursor: default;
-}
-
 .slot__empty {
+  border-color: #3c3c3c;
   background-color: #3c3c3c;
-  border: 0.15em solid #3c3c3c;
 }
 
 .slot__red {
-  border: 0.15em solid #ff7575;
+  border-color: #ff7575;
   background-color: #e53a3a;
 }
 
 .slot__yellow {
+  border-color: #eed980;
   background-color: #eec724;
-  border: 0.15em solid #eed980;
+}
+
+.slot__green {
+  border-color: #8cec73;
+  background-color: #66df46;
+}
+
+.slot__blue {
+  border-color: #6f89fe;
+  background-color: #3a59e5;
+}
+
+.slot__pink {
+  border-color: #ef74c4;
+  background-color: #e53aa9;
+}
+
+.slot__purple {
+  border-color: #c77ff9;
+  background-color: #9f3ae5;
+}
+
+/* Misc */
+
+.win__anim {
+  animation: win_anim 0.2s ease 1s forwards;
+  transform: scale(0);
+}
+
+.win__anim--btn {
+  animation: win_anim 0.2s ease 3s forwards;
+  transform: scale(0);
+}
+
+.confetti {
+  width: 1em;
+  height: 2em;
+  position: fixed;
+  animation: confetti_anim ease forwards;
+}
+
+.confetti__anim {
+  animation: confetti_anim 1s ease 1s forwards;
+}
+
+@keyframes win_anim {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes confetti_anim {
+  from {
+    top: -50vh;
+  }
+  to {
+    top: 150vh;
+  }
 }

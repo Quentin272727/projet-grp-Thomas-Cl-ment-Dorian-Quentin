@@ -5,9 +5,21 @@ type RowStruct struct {
 	IsPlaced bool
 }
 
+type WinStruct struct {
+	Winner int
+	IsWin  bool
+}
+
+type LeaderboardScores struct {
+	Player   int
+	IsWinner bool
+}
+
 type GameStruct struct {
 	Title        string
 	PlayerToPlay int
+	Leaderboard  []LeaderboardScores
+	Win          WinStruct
 	Rows         [][]RowStruct
 	IsLineFull   []bool
 }
@@ -15,8 +27,13 @@ type GameStruct struct {
 var Data = GameStruct{
 	Title:        "Game",
 	PlayerToPlay: PlayerToPlay,
-	Rows:         make([][]RowStruct, 6),
-	IsLineFull:   make([]bool, 7),
+	Leaderboard:  []LeaderboardScores{},
+	Win: WinStruct{
+		Winner: 0,
+		IsWin:  false,
+	},
+	Rows:       make([][]RowStruct, 6),
+	IsLineFull: make([]bool, 7),
 }
 var IsGameStarted = false
 var PlayerToPlay = 1

@@ -5,9 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/public/style.css" />
     <link rel="stylesheet" href="/public/game/style.css" />
+    <script src="/public/game/script.js" defer></script>
     <title>Game - Power4Web</title>
   </head>
   <body>
+    <div class="noselect leaderboard">
+      <div class="leaderboard__player">
+        <div class="slot slot__red"></div>
+        {{if not .Leaderboard}}
+        <p>-</p>
+        {{else}} {{range $score := .Leaderboard}} {{if eq $score.Player 1}} {{if
+        $score.IsWinner}}
+        <p>1</p>
+        {{else}}
+        <p>0</p>
+        {{end}} {{else}}
+        <p>0</p>
+        {{end}} {{end}} {{end}}
+      </div>
+      <div class="leaderboard__separator"></div>
+      <div class="leaderboard__player">
+        <div class="slot slot__yellow"></div>
+        {{if not .Leaderboard}}
+        <p>-</p>
+        {{else}} {{range $score := .Leaderboard}} {{if eq $score.Player 2}} {{if
+        $score.IsWinner}}
+        <p>1</p>
+        {{else}}
+        <p>0</p>
+        {{end}} {{else}}
+        <p>0</p>
+        {{end}} {{end}} {{end}}
+      </div>
+    </div>
+
+    {{if .Win.IsWin}}
+    <div class="popup noselect">
+      {{if eq .Win.Winner 1}}
+      <div class="slot slot__big slot__red win__anim"></div>
+      {{end}} {{if eq .Win.Winner 2}}
+      <div class="slot slot__big slot__yellow win__anim"></div>
+      {{end}}
+      <h1 class="win__anim">Gagne !</h1>
+
+      <form action="/newgame" method="post">
+        <button
+          class="btn btn--white win__anim--btn"
+          name="newgame_btn"
+          value=""
+          type="submit"
+        >
+          Relancer une partie
+        </button>
+      </form>
+    </div>
+    {{end}}
+
     <h1>{{.Title}}</h1>
     <div class="game">
       {{if eq .PlayerToPlay 1}}
@@ -18,63 +71,98 @@
       <div class="game__actions">
         <form action="/placeLine" method="post">
           {{if index .IsLineFull 0}}
-          <button class="slot__button slot__button-disabled" disabled>1</button>
+          <button class="btn btn--black btn__disabled" disabled>1</button>
           {{else}}
-          <button class="slot__button" name="line_btn" value="1" type="submit">
+          <button
+            class="btn btn--black"
+            name="line_btn"
+            value="1"
+            type="submit"
+          >
             1
           </button>
           {{end}}
         </form>
         <form action="/placeLine" method="post">
           {{if index .IsLineFull 1}}
-          <button class="slot__button slot__button-disabled" disabled>2</button>
+          <button class="btn btn--black btn__disabled" disabled>2</button>
           {{else}}
-          <button class="slot__button" name="line_btn" value="2" type="submit">
+          <button
+            class="btn btn--black"
+            name="line_btn"
+            value="2"
+            type="submit"
+          >
             2
           </button>
           {{end}}
         </form>
         <form action="/placeLine" method="post">
           {{if index .IsLineFull 2}}
-          <button class="slot__button slot__button-disabled" disabled>3</button>
+          <button class="btn btn--black btn__disabled" disabled>3</button>
           {{else}}
-          <button class="slot__button" name="line_btn" value="3" type="submit">
+          <button
+            class="btn btn--black"
+            name="line_btn"
+            value="3"
+            type="submit"
+          >
             3
           </button>
           {{end}}
         </form>
         <form action="/placeLine" method="post">
           {{if index .IsLineFull 3}}
-          <button class="slot__button slot__button-disabled" disabled>4</button>
+          <button class="btn btn--black btn__disabled" disabled>4</button>
           {{else}}
-          <button class="slot__button" name="line_btn" value="4" type="submit">
+          <button
+            class="btn btn--black"
+            name="line_btn"
+            value="4"
+            type="submit"
+          >
             4
           </button>
           {{end}}
         </form>
         <form action="/placeLine" method="post">
           {{if index .IsLineFull 4}}
-          <button class="slot__button slot__button-disabled" disabled>5</button>
+          <button class="btn btn--black btn__disabled" disabled>5</button>
           {{else}}
-          <button class="slot__button" name="line_btn" value="5" type="submit">
+          <button
+            class="btn btn--black"
+            name="line_btn"
+            value="5"
+            type="submit"
+          >
             5
           </button>
           {{end}}
         </form>
         <form action="/placeLine" method="post">
           {{if index .IsLineFull 5}}
-          <button class="slot__button slot__button-disabled" disabled>6</button>
+          <button class="btn btn--black btn__disabled" disabled>6</button>
           {{else}}
-          <button class="slot__button" name="line_btn" value="6" type="submit">
+          <button
+            class="btn btn--black"
+            name="line_btn"
+            value="6"
+            type="submit"
+          >
             6
           </button>
           {{end}}
         </form>
         <form action="/placeLine" method="post">
           {{if index .IsLineFull 6}}
-          <button class="slot__button slot__button-disabled" disabled>7</button>
+          <button class="btn btn--black btn__disabled" disabled>7</button>
           {{else}}
-          <button class="slot__button" name="line_btn" value="7" type="submit">
+          <button
+            class="btn btn--black"
+            name="line_btn"
+            value="7"
+            type="submit"
+          >
             7
           </button>
           {{end}}

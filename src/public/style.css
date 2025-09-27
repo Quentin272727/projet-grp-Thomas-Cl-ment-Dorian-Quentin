@@ -1,10 +1,84 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
+:root {
+  --body__black-background-color: #0f0f0f;
+  /* - */
+  --card__black-background-color-disabled: #191919;
+  --card__black-border-color-disabled: #212121;
+  /* - */
+  --card__black-background-color: #262626;
+  --card__black-background-color--hover: #353535;
+  --card__black-border-color: #2f2f2f;
+  /* - */
+  --card__white-background-color: #fefefe;
+  --card__white-background-color--hover: #d6d6d6;
+  --card__white-border-color: #cecece;
+
+  --txt__white-color: #fefefe;
+  --txt__black-color: #262626;
+}
+
 * {
   font-family: "Outfit", sans-serif;
 }
 
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.popup {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  background-color: #00000096;
+}
+
+.btn {
+  padding: 0.8em 1em;
+  border-radius: 0.4em;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn--black {
+  border: 0.2em solid var(--card__black-border-color);
+  background-color: var(--card__black-background-color);
+  color: var(--txt-color);
+}
+
+.btn--black:hover {
+  background-color: var(--card__black-background-color--hover);
+}
+
+.btn--white {
+  background-color: var(--card__white-background-color);
+  border: 0.2em solid var(--card__white-border-color);
+  color: var(--txt__black-color);
+}
+
+.btn--white:hover {
+  background-color: var(--card__white-background-color--hover);
+}
+
+.btn__disabled {
+  border: 0.2em solid var(--card__black-border-color-disabled);
+  background-color: var(--card__black-background-color-disabled) !important;
+  cursor: default;
+}
+
 body {
-  color: #fefefe;
-  background-color: #0f0f0f;
+  color: var(--txt__white-color);
+  background-color: var(--body__black-background-color);
 }
