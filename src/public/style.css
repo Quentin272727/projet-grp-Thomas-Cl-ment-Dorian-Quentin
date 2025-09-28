@@ -3,8 +3,8 @@
 :root {
   --body__black-background-color: #0f0f0f;
   /* - */
-  --card__black-background-color-disabled: #191919;
-  --card__black-border-color-disabled: #212121;
+  --card__dark-background-color: #191919;
+  --card__dark-border-color: #212121;
   /* - */
   --card__black-background-color: #262626;
   --card__black-background-color--hover: #353535;
@@ -48,14 +48,23 @@
 .btn {
   padding: 0.8em 1em;
   border-radius: 0.4em;
+  text-decoration: none;
   cursor: pointer;
   transition: 0.3s ease;
+}
+
+a.btn {
+  padding: 0.5em 1em;
 }
 
 .btn--black {
   border: 0.2em solid var(--card__black-border-color);
   background-color: var(--card__black-background-color);
   color: var(--txt-color);
+}
+
+.btn--black:disabled {
+  background-color: var(--card__black-background-color) !important;
 }
 
 .btn--black:hover {
@@ -68,17 +77,71 @@
   color: var(--txt__black-color);
 }
 
+.btn--white:disabled {
+  background-color: var(--card__white-background-color) !important;
+}
+
 .btn--white:hover {
   background-color: var(--card__white-background-color--hover);
 }
 
 .btn__disabled {
-  border: 0.2em solid var(--card__black-border-color-disabled);
-  background-color: var(--card__black-background-color-disabled) !important;
+  border: 0.2em solid var(--card__dark-border-color);
+  background-color: var(--card__dark-background-color) !important;
   cursor: default;
 }
 
 body {
   color: var(--txt__white-color);
   background-color: var(--body__black-background-color);
+}
+
+.game__menu {
+  margin-top: 8em;
+  padding: 1em 2em;
+  width: fit-content;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  background-color: var(--card__dark-background-color);
+  border: 0.2em solid var(--card__dark-border-color);
+  border-radius: 0.3em;
+}
+
+.game__menu h1 {
+  margin: 0;
+}
+
+.player__selection {
+  display: flex;
+  gap: 1em;
+}
+
+.slot__selection {
+  display: flex;
+  gap: 0.4em;
+}
+
+.slot__selection button {
+  cursor: pointer;
+}
+
+.slot__selection button:disabled {
+  cursor: default;
+}
+
+.item__selected {
+  cursor: default !important;
+  animation: item_selected_anim 0.5s ease forwards;
+}
+
+@keyframes item_selected_anim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
 }

@@ -29,7 +29,25 @@ func GameLinePlayHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	game.PlaceCoinLine(w, r, lineInt)
+	game.PlaceCoinLine(lineInt)
 
 	http.Redirect(w, r, "/play", http.StatusSeeOther)
+}
+
+func GameNewPartyHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	btn := r.FormValue("newgame_btn")
+
+	if btn == "" {
+		game.NewParty()
+		http.Redirect(w, r, "/play", http.StatusSeeOther)
+		return
+	} else {
+		http.Error(w, "Data sent is malformed", http.StatusMethodNotAllowed)
+		return
+	}
 }

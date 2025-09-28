@@ -1,4 +1,4 @@
-let w = document.getElementsByClassName("win__anim");
+let w = document.getElementsByClassName("win");
 
 if (w.length >= 1) {
   for (let i = 0; i <= 200; i++) {

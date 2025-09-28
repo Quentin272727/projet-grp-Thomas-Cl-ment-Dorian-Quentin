@@ -3,12 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/game/style.css" />
     <link rel="stylesheet" href="/public/style.css" />
-    <title>Power4Web</title>
+    <title>{{.Title}}</title>
   </head>
   <body>
-    <h1>Power4Web</h1>
+    <div class="game__menu">
+      <h1>{{.Title}}</h1>
 
-    <a href="/play">Jouer</a>
+      <form class="player__selection" action="/selectPlayer" method="post">
+        <button
+          class="btn btn--black {{if eq .PlayerSelectedIndex 0}} item__selected {{end}}"
+          name="select-player_btn"
+          value="1"
+          type="submit"
+          {{if
+          eq
+          .PlayerSelectedIndex
+          0}}
+          disabled
+          {{end}}
+        >
+          Joueur 1
+        </button>
+
+        <button
+          class="btn btn--black {{if eq .PlayerSelectedIndex 1}} item__selected {{end}}"
+          name="select-player_btn"
+          value="2"
+          type="submit"
+          {{if
+          eq
+          .PlayerSelectedIndex
+          1}}
+          disabled
+          {{end}}
+        >
+          Joueur 2
+        </button>
+      </form>
+
+      <form class="slot__selection" action="/changeSlot" method="post">
+        {{range $sColor := .AvailableSlotColors}} {{ $isSelected := false }} {{
+        $playerN := -1 }}{{ $playerIndex := -1 }} {{ range $i, $p := $.Players
+        }} {{ if eq $p.Slot $sColor }} {{ $isSelected = true }} {{ $playerN =
+        add $i 1 }} {{ $playerIndex = $i }} {{ end }} {{ end }}
+
+        <button
+          class="slot slot__{{$sColor}} {{if and $isSelected (ne $playerIndex $.PlayerSelectedIndex)}} item__selected {{end}}"
+          name="change_slot"
+          value="{{$sColor}}"
+          type="submit"
+          {{if
+          $isSelected}}
+          disabled
+          {{end}}
+        >
+          {{ if ge $playerN 0 }}{{$playerN}}{{end}}
+        </button>
+        {{end}}
+      </form>
+
+      <a href="/play" class="btn btn--white">Jouer</a>
+    </div>
   </body>
 </html>

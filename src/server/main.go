@@ -15,6 +15,9 @@ func main() {
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("src/public"))))
 	http.HandleFunc("/play", handlers.GameHandler)
 	http.HandleFunc("/placeLine", handlers.GameLinePlayHandler)
+	http.HandleFunc("/newGame", handlers.GameNewPartyHandler)
+	http.HandleFunc("/changeSlot", handlers.ChangeSlotHandler)
+	http.HandleFunc("/selectPlayer", handlers.SelectPlayerHandler)
 	http.HandleFunc("/", handlers.LandingPageHandler)
 
 	fmt.Println("Server is listening on 127.0.0.1:3000")
