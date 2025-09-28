@@ -8,9 +8,10 @@
     <title>{{.Title}}</title>
   </head>
   <body>
-    <div class="game__menu">
-      <h1>{{.Title}}</h1>
+    <h1 class="game__title">{{.Title}}</h1>
 
+    <div class="game__menu noselect">
+      <h1>Personnalise ton jeton</h1>
       <form class="player__selection" action="/selectPlayer" method="post">
         <button
           class="btn btn--black {{if eq .PlayerSelectedIndex 0}} item__selected {{end}}"
@@ -63,8 +64,8 @@
         </button>
         {{end}}
       </form>
-
-      <a href="/play" class="btn btn--white">Jouer</a>
     </div>
+
+    <a class="game__play btn btn--white" href="/play">Jouer</a>
   </body>
 </html>

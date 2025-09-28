@@ -13,7 +13,6 @@ type checkForAWinnerStruct struct {
 }
 
 func Start(w http.ResponseWriter, r *http.Request) {
-	data.ServerData.PlayerToPlay = data.ServerData.PlayerToPlay
 	if data.IsGameStarted {
 		LoadPage(w, data.ServerData)
 	} else {
@@ -28,20 +27,15 @@ func NewParty() {
 		return
 	}
 
-	var newServerData = data.ServerStruct{
-		Title:        "Game",
-		PlayerToPlay: 1,
-		Players:      data.ServerData.Players,
-		Leaderboard:  data.ServerData.Leaderboard,
-		Win: data.WinStruct{
-			Winner: 0,
-			IsWin:  false,
-		},
-		Rows:       make([][]data.RowStruct, 6),
-		IsLineFull: make([]bool, 7),
+	// Reset variables that needs to be reset
+	data.ServerData.Rows = make([][]data.RowStruct, 6)
+	data.ServerData.IsLineFull = make([]bool, 7)
+	data.ServerData.Win = data.WinStruct{
+		Winner: 0,
+		IsWin:  false,
+		IsDraw: false,
 	}
 
-	data.ServerData = newServerData
 	loadRows()
 }
 

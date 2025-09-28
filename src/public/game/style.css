@@ -48,7 +48,7 @@
 }
 
 .game__content {
-  margin-top: 1em;
+  margin: 1em 0 3em 0;
   padding: 0.5em;
   border-radius: 0.3em;
   border: 0.2em solid var(--card__black-border-color);
