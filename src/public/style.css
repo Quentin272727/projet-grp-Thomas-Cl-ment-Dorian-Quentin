@@ -1,158 +1,161 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 :root {
-  --body__black-background-color: #0f0f0f;
-  /* - */
-  --card__dark-background-color: #191919;
-  --card__dark-border-color: #212121;
-  /* - */
-  --card__black-background-color: #262626;
-  --card__black-background-color--hover: #353535;
-  --card__black-border-color: #2f2f2f;
-  /* - */
-  --card__white-background-color: #fefefe;
-  --card__white-background-color--hover: #d6d6d6;
-  --card__white-border-color: #cecece;
-
-  --txt__white-color: #fefefe;
-  --txt__black-color: #262626;
+    --body__black-background-color: #0f0f0f;
+    /* - */
+    --card__dark-background-color: #191919;
+    --card__dark-border-color: #212121;
+    /* - */
+    --card__black-background-color: #262626;
+    --card__black-background-color--hover: #353535;
+    --card__black-border-color: #2f2f2f;
+    /* - */
+    --card__white-background-color: #fefefe;
+    --card__white-background-color--hover: #d6d6d6;
+    --card__white-border-color: #cecece;
+    /* - */
+    --txt__white-color: #fefefe;
+    --txt__black-color: #262626;
+    /* - */
+    --power4__color--background: #2f68e6;
+    --power4__color--border: #1f5dc5;
 }
 
 * {
-  font-family: "Outfit", sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 .noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .popup {
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 0;
-  background-color: #00000096;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: #00000096;
 }
 
 .btn {
-  padding: 0.8em 1em;
-  display: flex;
-  border-radius: 0.4em;
-  text-decoration: none;
-  cursor: pointer;
-  transition: 0.3s ease;
+    padding: 0.8em 1em;
+    display: flex;
+    border-radius: 0.4em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 a.btn {
-  padding: 0.3em 1em;
+    padding: 0.3em 1em;
 }
 
 .btn--black {
-  border: 0.2em solid var(--card__black-border-color);
-  background-color: var(--card__black-background-color);
-  color: var(--txt-color);
+    border: 0.2em solid var(--card__black-border-color);
+    background-color: var(--card__black-background-color);
+    color: var(--txt-color);
 }
 
 .btn--black:disabled {
-  background-color: var(--card__black-background-color) !important;
+    background-color: var(--card__black-background-color) !important;
 }
 
 .btn--black:hover {
-  background-color: var(--card__black-background-color--hover);
+    background-color: var(--card__black-background-color--hover);
 }
 
 .btn--white {
-  background-color: var(--card__white-background-color);
-  border: 0.2em solid var(--card__white-border-color);
-  color: var(--txt__black-color);
+    background-color: var(--card__white-background-color);
+    border: 0.2em solid var(--card__white-border-color);
+    color: var(--txt__black-color);
 }
 
 .btn--white:disabled {
-  background-color: var(--card__white-background-color) !important;
+    background-color: var(--card__white-background-color) !important;
 }
 
 .btn--white:hover {
-  background-color: var(--card__white-background-color--hover);
+    background-color: var(--card__white-background-color--hover);
 }
 
 .btn__disabled {
-  border: 0.2em solid var(--card__dark-border-color);
-  background-color: var(--card__dark-background-color) !important;
-  cursor: default;
+    border: 0.2em solid var(--card__dark-border-color);
+    background-color: var(--card__dark-background-color) !important;
+    cursor: default;
 }
 
 body {
-  color: var(--txt__white-color);
-  background-color: var(--body__black-background-color);
+    color: var(--txt__white-color);
+    background-color: var(--body__black-background-color);
 }
 
 .game__title {
-  width: fit-content;
-  margin: 2em auto 1.5em auto;
-  font-size: 4rem;
+    width: fit-content;
+    margin: 2em auto 1.5em auto;
+    font-size: 4rem;
 }
 
 .game__play {
-  width: fit-content;
-  margin: 3em auto 0 auto;
+    width: fit-content;
+    margin: 3em auto 0 auto;
 }
 
 .game__menu {
-  margin-inline: auto;
-  width: fit-content;
-  padding: 1em 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2em;
-  background-color: var(--card__dark-background-color);
-  border: 0.2em solid var(--card__dark-border-color);
-  border-radius: 0.3em;
+    margin-inline: auto;
+    width: fit-content;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    background-color: var(--card__dark-background-color);
+    border: 0.2em solid var(--card__dark-border-color);
+    border-radius: 0.3em;
 }
 
 .game__menu h1 {
-  margin: 0;
+    margin: 0;
 }
 
 .player__selection {
-  display: flex;
-  gap: 1em;
+    display: flex;
+    gap: 1em;
 }
 
 .slot__selection {
-  display: flex;
-  gap: 0.4em;
+    display: flex;
+    gap: 0.4em;
 }
 
 .slot__selection button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .slot__selection button:disabled {
-  cursor: default;
+    cursor: default;
 }
 
 .item__selected {
-  cursor: default !important;
-  animation: item_selected_anim 0.5s ease forwards;
+    cursor: default !important;
+    animation: item_selected_anim 0.5s ease forwards;
 }
 
 @keyframes item_selected_anim {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0.5;
-  }
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
 }

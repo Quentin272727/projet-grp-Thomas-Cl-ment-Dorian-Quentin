@@ -44,16 +44,26 @@ func Reset() {
 }
 // load the game page
 func LoadPage(w http.ResponseWriter, d data.ServerStruct) {
-	tmpl, err := template.ParseFiles("src/client/game/index.html")
+	funcs := template.FuncMap{
+		"minus": func(a, b int) int {
+			return a - b
+		},
+	}
+
+	tmpl, err := template.New("index.html").Funcs(funcs).ParseFiles("src/client/game/index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	tmpl.Execute(w, d)
+	tmpl.ExecuteTemplate(w, "index.html", data.ServerData)
 }
 
 func PlaceCoinLine(line int) {
+	if data.ServerData.Win.IsWin || data.ServerData.Win.IsDraw {
+		return
+	}
+
 	if !appendCoinInsideRow(line) {
 		win := checkForAWinner()
 
@@ -94,6 +104,10 @@ func loadRows() {
 }
 
 func appendCoinInsideRow(l int) bool {
+	if data.ServerData.Win.IsWin || data.ServerData.Win.IsDraw {
+		return true
+	}
+
 	// This function return true if the entire line is full and no coin can slide into it
 	for i := 6; i >= 1; i-- {
 		if !data.ServerData.Rows[i-1][l-1].IsPlaced {
