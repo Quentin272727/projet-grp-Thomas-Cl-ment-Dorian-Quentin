@@ -104,10 +104,6 @@ func loadRows() {
 }
 
 func appendCoinInsideRow(l int) bool {
-	if data.ServerData.Win.IsWin || data.ServerData.Win.IsDraw {
-		return true
-	}
-
 	// This function return true if the entire line is full and no coin can slide into it
 	for i := 6; i >= 1; i-- {
 		if !data.ServerData.Rows[i-1][l-1].IsPlaced {
