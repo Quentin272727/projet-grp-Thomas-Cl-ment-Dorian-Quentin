@@ -42,7 +42,7 @@ func NewParty() {
 func Reset() {
 	// -----
 }
-
+// load the game page
 func LoadPage(w http.ResponseWriter, d data.ServerStruct) {
 	tmpl, err := template.ParseFiles("src/client/game/index.html")
 	if err != nil {
