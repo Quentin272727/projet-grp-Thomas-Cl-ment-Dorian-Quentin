@@ -1,162 +1,198 @@
 /* Tiny leaderboard */
 .leaderboard {
-  margin-top: 5em;
-  width: fit-content;
-  padding: 0.5em;
-  position: fixed;
-  display: flex;
-  gap: 1em;
-  background-color: var(--card__black-background-color);
-  border: 0.3em solid var(--card__black-border-color);
-  border-radius: 0.2em;
+    margin-top: 5em;
+    width: fit-content;
+    padding: 0.5em;
+    position: fixed;
+    display: flex;
+    gap: 1em;
+    background-color: var(--card__black-background-color);
+    border: 0.3em solid var(--card__black-border-color);
+    border-radius: 0.2em;
 }
 
 .leaderboard__player {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .leaderboard__player .slot {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .leaderboard__player p {
-  margin: 0 0 0.4em 0;
-  font-family: monospace;
+    margin: 0 0 0.4em 0;
+    font-family: monospace;
 }
 
 .leaderboard__separator {
-  width: 0.2em;
-  background-color: var(--card__black-border-color);
-  border-radius: 0.3em;
+    width: 0.2em;
+    background-color: var(--card__black-border-color);
+    border-radius: 0.3em;
 }
 
 /* Game related content */
-
 .game {
-  width: calc(100% - 10em);
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: calc(100% - 10em);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mouse__coin--restrictor {
+    width: 100%;
+    margin: 2em 0 2em 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#mouse__coin {
+    position: absolute;
+    z-index: 1;
 }
 
 .game__actions {
-  margin-top: 3em;
-  display: flex;
-  gap: 0.4em;
+    width: 100%;
+    height: 1em;
+    position: absolute;
+    top: -0.6em;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.52em;
+}
+
+.game__actions button {
+    width: 2em;
+    height: 2.5em;
+    padding-inline: 1em;
+    padding-bottom: 88%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--txt__white-color);
+    cursor: pointer;
+}
+
+.game__actions button:disabled {
+    cursor: default;
 }
 
 .game__content {
-  margin: 1em 0 3em 0;
-  padding: 0.5em;
-  border-radius: 0.3em;
-  border: 0.2em solid var(--card__black-border-color);
-  background-color: var(--card__black-background-color);
+    margin: 1em 0 3em 0;
+    position: relative;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    border: 0.2em solid var(--power4__color--border);
+    background-color: var(--power4__color--background);
 }
 
 /* Slots */
 
 .slots {
-  margin-top: 0.3em;
-  display: flex;
-  gap: 0.4em;
+    margin-top: 0.3em;
+    display: flex;
+    gap: 0.4em;
 }
 
 .slot {
-  width: 1.5em;
-  height: 1.5em;
-  border: 0.15em solid;
-  border-radius: 30em;
-  color: var(--txt__white-color);
+    width: 1.5em;
+    height: 1.5em;
+    border: 0.15em solid;
+    border-radius: 30em;
+    color: var(--txt__white-color);
 }
 
 button.slot {
-  width: 2.5em;
-  height: 2.5em;
-  border: 0.25em solid;
+    width: 2.5em;
+    height: 2.5em;
+    border: 0.25em solid;
 }
 
 .slot__big {
-  width: 3em;
-  height: 3em;
-  border-top-width: 0.3em !important;
-  border-right-width: 0.3em !important;
-  border-bottom-width: 0.3em !important;
-  border-left-width: 0.3em !important;
+    width: 3em;
+    height: 3em;
+    border-top-width: 0.3em !important;
+    border-right-width: 0.3em !important;
+    border-bottom-width: 0.3em !important;
+    border-left-width: 0.3em !important;
 }
 
 .slot__empty {
-  border-color: #3c3c3c !important;
-  background-color: #3c3c3c;
+    border-color: #3c3c3c !important;
+    background-color: #3c3c3c;
 }
 
 .slot__red {
-  border-color: #ff7575 !important;
-  background-color: #e53a3a;
+    border-color: #ff7575 !important;
+    background-color: #e53a3a;
 }
 
 .slot__yellow {
-  border-color: #eed980 !important;
-  background-color: #eec724;
+    border-color: #eed980 !important;
+    background-color: #eec724;
 }
 
 .slot__green {
-  border-color: #8cec73 !important;
-  background-color: #66df46;
+    border-color: #8cec73 !important;
+    background-color: #66df46;
 }
 
 .slot__blue {
-  border-color: #6f89fe !important;
-  background-color: #3a59e5;
+    border-color: #6f89fe !important;
+    background-color: #3a59e5;
 }
 
 .slot__pink {
-  border-color: #ef74c4 !important;
-  background-color: #e53aa9;
+    border-color: #ef74c4 !important;
+    background-color: #e53aa9;
 }
 
 .slot__purple {
-  border-color: #c77ff9 !important;
-  background-color: #9f3ae5;
+    border-color: #c77ff9 !important;
+    background-color: #9f3ae5;
 }
 
 /* Misc */
 .appear__anim {
-  animation: appear_anim 0.2s ease 1s forwards;
-  transform: scale(0);
+    animation: appear_anim 0.2s ease 1s forwards;
+    transform: scale(0);
 }
 
 .appear__anim--btn {
-  animation: appear_anim 0.2s ease 3s forwards;
-  transform: scale(0);
+    animation: appear_anim 0.2s ease 3s forwards;
+    transform: scale(0);
 }
 
 .confetti {
-  width: 1em;
-  height: 2em;
-  position: fixed;
-  animation: confetti_anim ease forwards;
+    width: 1em;
+    height: 2em;
+    position: fixed;
+    animation: confetti_anim ease forwards;
 }
 
 .confetti__anim {
-  animation: confetti_anim 1s ease 1s forwards;
+    animation: confetti_anim 1s ease 1s forwards;
 }
 
 @keyframes appear_anim {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 @keyframes confetti_anim {
-  from {
-    top: -50vh;
-  }
-  to {
-    top: 150vh;
-  }
+    from {
+        top: -50vh;
+    }
+    to {
+        top: 150vh;
+    }
 }
