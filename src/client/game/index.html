@@ -86,95 +86,12 @@
 
         <h1>{{.Title}}</h1>
         <div class="game noselect">
-            <!-- --
-            <form class="game__actions" action="/placeLine" method="post">
-                {{if index .IsLineFull 0}}
-                <button class="btn btn--black btn__disabled" disabled>1</button>
-                {{else}}
-                <button
-                    class="btn btn--black"
-                    name="line_btn"
-                    value="1"
-                    type="submit"
-                >
-                    1
-                </button>
-                {{end}} {{if index .IsLineFull 1}}
-                <button class="btn btn--black btn__disabled" disabled>2</button>
-                {{else}}
-                <button
-                    class="btn btn--black"
-                    name="line_btn"
-                    value="2"
-                    type="submit"
-                >
-                    2
-                </button>
-                {{end}} {{if index .IsLineFull 2}}
-                <button class="btn btn--black btn__disabled" disabled>3</button>
-                {{else}}
-                <button
-                    class="btn btn--black"
-                    name="line_btn"
-                    value="3"
-                    type="submit"
-                >
-                    3
-                </button>
-                {{end}} {{if index .IsLineFull 3}}
-                <button class="btn btn--black btn__disabled" disabled>4</button>
-                {{else}}
-                <button
-                    class="btn btn--black"
-                    name="line_btn"
-                    value="4"
-                    type="submit"
-                >
-                    4
-                </button>
-                {{end}} {{if index .IsLineFull 4}}
-                <button class="btn btn--black btn__disabled" disabled>5</button>
-                {{else}}
-                <button
-                    class="btn btn--black"
-                    name="line_btn"
-                    value="5"
-                    type="submit"
-                >
-                    5
-                </button>
-                {{end}} {{if index .IsLineFull 5}}
-                <button class="btn btn--black btn__disabled" disabled>6</button>
-                {{else}}
-                <button
-                    class="btn btn--black"
-                    name="line_btn"
-                    value="6"
-                    type="submit"
-                >
-                    6
-                </button>
-                {{end}} {{if index .IsLineFull 6}}
-                <button class="btn btn--black btn__disabled" disabled>7</button>
-                {{else}}
-                <button
-                    class="btn btn--black"
-                    name="line_btn"
-                    value="7"
-                    type="submit"
-                >
-                    7
-                </button>
-                {{end}}
-            </form>
-            -->
-
             <div>
                 <div class="mouse__coin--restrictor">
                     <div
                         id="mouse__coin"
                         class="slot slot__{{(index .Players (minus .PlayerToPlay 1)).Slot}}"
-                        style="margin-left: calc(46%)"
+                        style=""
                     ></div>
                 </div>
 
