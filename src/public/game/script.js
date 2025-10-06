@@ -23,7 +23,8 @@ function createConfetti() {
 
 // Make the coin slide
 document.addEventListener("mousemove", (m) => {
-  coin.style.marginLeft = calcCoinPos(m.x) + "px";
+  coin.style.transform = `translate(${calcCoinPos(m.x)}px, 0)`;
+  //coin.style.marginLeft = calcCoinPos(m.x) + "px";
 });
 
 function calcCoinPos(cursorPosX) {
