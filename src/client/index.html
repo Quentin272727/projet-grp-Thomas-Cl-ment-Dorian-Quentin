@@ -1,71 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/game/style.css" />
-    <link rel="stylesheet" href="/public/style.css" />
-    <title>{{.Title}}</title>
-  </head>
-  <body>
-    <h1 class="game__title">{{.Title}}</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/public/game/style.css" />
+        <link rel="stylesheet" href="/public/style.css" />
+        <link rel="icon" type="image/x-icon" href="/public/imgs/logo.png" />
+        <title>{{.Title}}</title>
+    </head>
+    <body>
+        <div class="game__selection">
+            <img src="/public/imgs/logo.png" />
 
-    <div class="game__menu noselect">
-      <h1>Personnalise ton jeton</h1>
-      <form class="player__selection" action="/selectPlayer" method="post">
-        <button
-          class="btn btn--black {{if eq .PlayerSelectedIndex 0}} item__selected {{end}}"
-          name="select-player_btn"
-          value="1"
-          type="submit"
-          {{if
-          eq
-          .PlayerSelectedIndex
-          0}}
-          disabled
-          {{end}}
-        >
-          Joueur 1
-        </button>
+            <div class="selection__menu noselect">
+                <h1>Personnalise ton jeton</h1>
+                <form
+                    class="selection__player"
+                    action="/selectPlayer"
+                    method="post"
+                >
+                    <button
+                        class="btn btn--black {{if eq .PlayerSelectedIndex 0}} item__selected {{end}}"
+                        name="select-player_btn"
+                        value="1"
+                        type="submit"
+                        {{if
+                        eq
+                        .PlayerSelectedIndex
+                        0}}
+                        disabled
+                        {{end}}
+                    >
+                        Joueur 1
+                    </button>
 
-        <button
-          class="btn btn--black {{if eq .PlayerSelectedIndex 1}} item__selected {{end}}"
-          name="select-player_btn"
-          value="2"
-          type="submit"
-          {{if
-          eq
-          .PlayerSelectedIndex
-          1}}
-          disabled
-          {{end}}
-        >
-          Joueur 2
-        </button>
-      </form>
+                    <button
+                        class="btn btn--black {{if eq .PlayerSelectedIndex 1}} item__selected {{end}}"
+                        name="select-player_btn"
+                        value="2"
+                        type="submit"
+                        {{if
+                        eq
+                        .PlayerSelectedIndex
+                        1}}
+                        disabled
+                        {{end}}
+                    >
+                        Joueur 2
+                    </button>
+                </form>
 
-      <form class="slot__selection" action="/changeSlot" method="post">
-        {{range $sColor := .AvailableSlotColors}} {{ $isSelected := false }} {{
-        $playerN := -1 }}{{ $playerIndex := -1 }} {{ range $i, $p := $.Players
-        }} {{ if eq $p.Slot $sColor }} {{ $isSelected = true }} {{ $playerN =
-        add $i 1 }} {{ $playerIndex = $i }} {{ end }} {{ end }}
+                <form
+                    class="selection__slot"
+                    action="/changeSlot"
+                    method="post"
+                >
+                    {{range $sColor := .AvailableSlotColors}} {{ $isSelected :=
+                    false }} {{ $playerN := -1 }}{{ $playerIndex := -1 }} {{
+                    range $i, $p := $.Players }} {{ if eq $p.Slot $sColor }} {{
+                    $isSelected = true }} {{ $playerN = add $i 1 }} {{
+                    $playerIndex = $i }} {{ end }} {{ end }}
 
-        <button
-          class="slot slot__{{$sColor}} {{if and $isSelected (ne $playerIndex $.PlayerSelectedIndex)}} item__selected {{end}}"
-          name="change_slot"
-          value="{{$sColor}}"
-          type="submit"
-          {{if
-          $isSelected}}
-          disabled
-          {{end}}
-        >
-          {{ if ge $playerN 0 }}{{$playerN}}{{end}}
-        </button>
-        {{end}}
-      </form>
-    </div>
+                    <button
+                        class="slot slot__{{$sColor}} {{if and $isSelected (ne $playerIndex $.PlayerSelectedIndex)}} item__selected {{end}}"
+                        name="change_slot"
+                        value="{{$sColor}}"
+                        type="submit"
+                        {{if
+                        $isSelected}}
+                        disabled
+                        {{end}}
+                    >
+                        {{ if ge $playerN 0 }}{{$playerN}}{{end}}
+                    </button>
+                    {{end}}
+                </form>
+            </div>
 
-    <a class="game__play btn btn--white" href="/play">Jouer</a>
-  </body>
+            <a class="selection__play btn btn--white" href="/play">Jouer</a>
+        </div>
+    </body>
 </html>

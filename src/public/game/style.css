@@ -161,12 +161,12 @@ button.slot {
 
 /* Misc */
 .appear__anim {
-    animation: appear_anim 0.2s ease 1s forwards;
+    animation: scale_transition 0.2s ease 1s forwards;
     transform: scale(0);
 }
 
 .appear__anim--btn {
-    animation: appear_anim 0.2s ease 3s forwards;
+    animation: scale_transition 0.2s ease 3s forwards;
     transform: scale(0);
 }
 
@@ -174,14 +174,14 @@ button.slot {
     width: 1em;
     height: 2em;
     position: fixed;
-    animation: confetti_anim ease forwards;
+    animation: dropping_confetti ease forwards;
 }
 
 .confetti__anim {
-    animation: confetti_anim 1s ease 1s forwards;
+    animation: dropping_confetti 1s ease 1s forwards;
 }
 
-@keyframes appear_anim {
+@keyframes scale_transition {
     from {
         transform: scale(0);
     }
@@ -190,7 +190,7 @@ button.slot {
     }
 }
 
-@keyframes confetti_anim {
+@keyframes dropping_confetti {
     from {
         top: -50vh;
     }

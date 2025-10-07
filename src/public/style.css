@@ -46,6 +46,7 @@
     justify-content: center;
     z-index: 10;
     background-color: #00000096;
+    animation: background_blur_transition 1s ease forwards;
 }
 
 .btn {
@@ -100,20 +101,19 @@ body {
     background-color: var(--body__black-background-color);
 }
 
-.game__title {
-    width: fit-content;
-    margin: 2em auto 1.5em auto;
-    font-size: 4rem;
+.game__selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.game__play {
-    width: fit-content;
-    margin: 3em auto 0 auto;
+.game__selection img {
+    width: 12em;
+    margin: 2em 0 1.5em 0;
 }
 
-.game__menu {
+.selection__menu {
     margin-inline: auto;
-    width: fit-content;
     padding: 1em 2em;
     display: flex;
     flex-direction: column;
@@ -124,38 +124,52 @@ body {
     border-radius: 0.3em;
 }
 
-.game__menu h1 {
+.selection__menu h1 {
     margin: 0;
 }
 
-.player__selection {
+.selection__player {
     display: flex;
     gap: 1em;
 }
 
-.slot__selection {
+.selection__slot {
     display: flex;
     gap: 0.4em;
 }
 
-.slot__selection button {
+.selection__slot button {
     cursor: pointer;
 }
 
-.slot__selection button:disabled {
+.selection__slot button:disabled {
     cursor: default;
 }
 
 .item__selected {
     cursor: default !important;
-    animation: item_selected_anim 0.5s ease forwards;
+    animation: opacity_transition 0.5s ease forwards;
 }
 
-@keyframes item_selected_anim {
+.selection__play {
+    width: fit-content;
+    margin: 3em 0 0 0;
+}
+
+@keyframes opacity_transition {
     from {
         opacity: 1;
     }
     to {
         opacity: 0.5;
+    }
+}
+
+@keyframes background_blur_transition {
+    from {
+        backdrop-filter: blur(0px);
+    }
+    to {
+        backdrop-filter: blur(10px);
     }
 }
