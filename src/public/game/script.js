@@ -10,7 +10,21 @@ if (w.length >= 1) {
 function createConfetti() {
   let p = document.getElementsByClassName("popup");
   let c = document.createElement("div");
-  let colors = ["red", "#00ff0d", "#ffd900", "#3700ff", "#ff00f2"];
+  let colors = [
+    "red",
+    "#00ff0d",
+    "#ffd900",
+    "#3700ff",
+    "#ff00f2",
+    "#dd8e29",
+    "#754397",
+    "#0b3cc2",
+    "#fb6650",
+    "#52a74c",
+    "#abe3f8",
+    "#37423e",
+    "#a38b0b",
+  ];
 
   c.className = "confetti";
   c.style.top = "-50vh";
