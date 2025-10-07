@@ -60,6 +60,7 @@ func LoadPage(w http.ResponseWriter, d data.ServerStruct) {
 }
 
 func PlaceCoinLine(line int) {
+	// Check if the game is already won or draw
 	if data.ServerData.Win.IsWin || data.ServerData.Win.IsDraw {
 		return
 	}
@@ -94,6 +95,7 @@ func PlaceCoinLine(line int) {
 }
 
 func loadRows() {
+	// Initialize the rows
 	for i := 1; i <= 6; i++ {
 		rowToAdd := []data.RowStruct{}
 		for y := 1; y <= 7; y++ {

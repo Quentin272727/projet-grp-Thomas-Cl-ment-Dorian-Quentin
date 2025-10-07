@@ -31,7 +31,7 @@ Un joueur a placé 4 pièces alignées horizontalement, verticalement ou en diag
 
 ### Images
 
-![image info](https://i.imgur.com/gOaVX0z.png)
+![image info](https://i.imgur.com/8mVPfKB.png)
 
 ### Dévellopeur
 
