@@ -42,7 +42,7 @@ func NewParty() {
 func Reset() {
 	// -----
 }
-
+// load the game page
 func LoadPage(w http.ResponseWriter, d data.ServerStruct) {
 	funcs := template.FuncMap{
 		"minus": func(a, b int) int {
