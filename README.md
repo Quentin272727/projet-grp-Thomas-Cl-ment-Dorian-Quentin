@@ -35,8 +35,8 @@ Un joueur a placé 4 pièces alignées horizontalement, verticalement ou en diag
 
 ### Dévellopeur
 
-> Thomas dévellopeur jeux
+> Thomas dévellopeur
 >
-> Quentin dévellopeur graphique
+> Quentin dévellopeur
 >
-> Clément dévellopeur WEB
+> Clément dévellopeur
