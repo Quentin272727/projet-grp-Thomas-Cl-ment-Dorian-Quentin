@@ -1,4 +1,3 @@
-# projet-grp-Thomas-Cl-ment-Dorian-Quentin
 # PUISSANCE 4
 
 ## Présentation
