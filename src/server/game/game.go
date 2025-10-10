@@ -1,9 +1,9 @@
 package game
 
 import (
-	"html/template"
 	"net/http"
 	"power4web/src/server/data"
+	"power4web/src/server/pages"
 )
 
 type checkForAWinnerStruct struct {
@@ -14,10 +14,10 @@ type checkForAWinnerStruct struct {
 
 func Start(w http.ResponseWriter, r *http.Request) {
 	if data.IsGameStarted {
-		LoadPage(w, data.ServerData)
+		pages.LoadPage(w, r, "src/client/game/index.html")
 	} else {
 		loadRows()
-		LoadPage(w, data.ServerData)
+		pages.LoadPage(w, r, "src/client/game/index.html")
 		data.IsGameStarted = true
 	}
 }
@@ -37,27 +37,6 @@ func NewParty() {
 	}
 
 	loadRows()
-}
-
-func Reset() {
-	// -----
-}
-
-// load the game page
-func LoadPage(w http.ResponseWriter, d data.ServerStruct) {
-	funcs := template.FuncMap{
-		"minus": func(a, b int) int {
-			return a - b
-		},
-	}
-
-	tmpl, err := template.New("index.html").Funcs(funcs).ParseFiles("src/client/game/index.html")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	tmpl.ExecuteTemplate(w, "index.html", data.ServerData)
 }
 
 func PlaceCoinLine(line int) {
