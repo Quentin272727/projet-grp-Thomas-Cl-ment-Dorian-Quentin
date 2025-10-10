@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notfound {
+    width: fit-content;
+    padding: 2em 3em;
+    border: 0.3em solid var(--card__black-border-color);
+    border-radius: 0.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    background-color: var(--card__black-background-color);
+}
+
+.notfound h1 {
+    margin: 0;
+    font-size: 3rem;
+}
+
+.notfound p {
+    margin: 0;
+}
