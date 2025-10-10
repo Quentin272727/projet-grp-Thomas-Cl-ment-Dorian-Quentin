@@ -97,6 +97,7 @@ a.btn {
 }
 
 body {
+    margin: 0;
     color: var(--txt__white-color);
     background-color: var(--body__black-background-color);
 }
