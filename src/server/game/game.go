@@ -42,6 +42,7 @@ func NewParty() {
 func Reset() {
 	// -----
 }
+
 // load the game page
 func LoadPage(w http.ResponseWriter, d data.ServerStruct) {
 	funcs := template.FuncMap{
@@ -206,6 +207,80 @@ func checkForAWinner() checkForAWinnerStruct {
 		ps = make([]int, data.NumOfPlayers)
 	}
 
+	// check for diagonal winner (en bas a droite / en haut a gauche)
+	ps = make([]int, data.NumOfPlayers) // sert a faire un reset du slice
+	lastPlayerChecked = 0
+	for r := 6; r >= 1; r-- { // parcourir toute les lignes
+		for c := 1; c <= 7; c++ { // parcourir toute les colonnes
+			rr := r                  // sert a reset la ligne
+			cc := c                  // sert a reset la colonne
+			for rr <= 6 && cc <= 7 { // tant que la ligne et la colonne sont dans les limites
+				if lastPlayerChecked == 0 {
+					lastPlayerChecked = data.ServerData.PlayerToPlay
+				}
+
+				if !data.ServerData.Rows[rr-1][cc-1].IsPlaced { // rr est la ligne et cc la colonne
+					ps[lastPlayerChecked-1] = 0
+				} else {
+					if data.ServerData.Rows[rr-1][cc-1].IsPlaced && data.ServerData.Rows[rr-1][cc-1].Player == lastPlayerChecked {
+						ps[data.ServerData.Rows[rr-1][cc-1].Player-1] += 1
+					} else {
+						ps[lastPlayerChecked-1] = 0
+						ps[data.ServerData.Rows[rr-1][cc-1].Player-1] += 1
+					}
+
+					if ps[data.ServerData.Rows[rr-1][cc-1].Player-1] >= 4 {
+						return checkForAWinnerStruct{
+							Player:        data.ServerData.Rows[rr-1][cc-1].Player,
+							IsThereWinner: true,
+							IsDraw:        false,
+						}
+					}
+					lastPlayerChecked = data.ServerData.Rows[rr-1][cc-1].Player
+				}
+				cc += 1
+				rr += 1
+			}
+			ps = make([]int, data.NumOfPlayers)
+		}
+	}
+	// check for diagonal winner (en bas a gauche / en haut a droite)
+	ps = make([]int, data.NumOfPlayers) // sert a faire un reset du slice
+	lastPlayerChecked = 0
+	for r := 6; r >= 1; r-- { // parcourir toute les lignes
+		for c := 1; c <= 7; c++ { // parcourir toute les colonnes
+			rr := r                  // sert a reset la ligne
+			cc := c                  // sert a reset la colonne
+			for rr >= 1 && cc <= 7 { // tant que la ligne et la colonne sont dans les limites
+				if lastPlayerChecked == 0 {
+					lastPlayerChecked = data.ServerData.PlayerToPlay
+				}
+
+				if !data.ServerData.Rows[rr-1][cc-1].IsPlaced { // rr est la ligne et cc la colonne
+					ps[lastPlayerChecked-1] = 0
+				} else {
+					if data.ServerData.Rows[rr-1][cc-1].IsPlaced && data.ServerData.Rows[rr-1][cc-1].Player == lastPlayerChecked {
+						ps[data.ServerData.Rows[rr-1][cc-1].Player-1] += 1
+					} else {
+						ps[lastPlayerChecked-1] = 0
+						ps[data.ServerData.Rows[rr-1][cc-1].Player-1] += 1
+					}
+
+					if ps[data.ServerData.Rows[rr-1][cc-1].Player-1] >= 4 {
+						return checkForAWinnerStruct{
+							Player:        data.ServerData.Rows[rr-1][cc-1].Player,
+							IsThereWinner: true,
+							IsDraw:        false,
+						}
+					}
+					lastPlayerChecked = data.ServerData.Rows[rr-1][cc-1].Player
+				}
+				cc += 1
+				rr -= 1
+			}
+			ps = make([]int, data.NumOfPlayers)
+		}
+	}
 	return checkForAWinnerStruct{
 		Player:        0,
 		IsThereWinner: false,
