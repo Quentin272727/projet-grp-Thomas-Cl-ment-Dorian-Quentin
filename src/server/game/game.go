@@ -39,7 +39,6 @@ func NewParty() {
 	loadRows()
 }
 
-
 func PlaceCoinLine(line int) {
 	if data.ServerData.Win.IsWin || data.ServerData.Win.IsDraw {
 		return
